@@ -3,72 +3,88 @@ import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import "./Navbar.css";
 
 class Navbar extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      active: "all",
+    };
+  }
+
+  handleFilter = (value) => {
+    this.setState({ active: value });
+    this.props.setFilter(value);
+  };
+
   render() {
-    const { setFilter, setLikesSort, setPriceSort, cartCount } = this.props;
+    const { setLikesSort, setPriceSort, cartCount } = this.props;
+    const { active } = this.state;
 
     return (
-      <div className="nav-bar">
-
-        {/* TITLE */}
-        <Link to="/home" style={{ textDecoration: "none", color: "black" }}>
-          <div className="title-box">
-            <p className="title-name">
-              <span>
-                <FontAwesomeIcon icon={faBook} />
-              </span>
-              BookStore
-            </p>
-          </div>
+      <nav className="navbar">
+        {/* LOGO */}
+        <Link to="/home" className="logo">
+          <FontAwesomeIcon icon={faBook} className="logo-icon" />
+          <span>BookStore</span>
         </Link>
 
-        {/* NAV CONTENT */}
-        <div className="content">
-
+        {/* MENU */}
+        <div className="nav-actions">
+          
           {/* ALL BOOKS */}
-          <Link to="/home" style={{ textDecoration: "none" }}>
-            <div className="box" onClick={() => setFilter("all")}>
-              All books
-            </div>
-          </Link>
+          <button
+            className={`nav-btn ${active === "all" ? "active" : ""}`}
+            onClick={() => this.handleFilter("all")}
+          >
+            All Books
+          </button>
 
           {/* CATEGORY */}
-          <select className="box" onChange={(e) => setFilter(e.target.value)}>
-            <option value="select-category">select-category</option>
+          <select
+            className="nav-select"
+            onChange={(e) => this.handleFilter(e.target.value)}
+          >
+            <option value="">Category</option>
             <option value="history">History</option>
             <option value="comedy">Comedy</option>
             <option value="romance">Romance</option>
           </select>
 
           {/* LIKES */}
-          <select className="box" onChange={(e) => setLikesSort(e.target.value)}>
+          <select
+            className="nav-select"
+            onChange={(e) => setLikesSort(e.target.value)}
+          >
             <option value="">Likes</option>
-            <option value="htl">High To Low Likes</option>
-            <option value="lth">Low To High Likes</option>
+            <option value="htl">High → Low</option>
+            <option value="lth">Low → High</option>
           </select>
 
           {/* PRICE */}
-          <select className="box" onChange={(e) => setPriceSort(e.target.value)}>
+          <select
+            className="nav-select"
+            onChange={(e) => setPriceSort(e.target.value)}
+          >
             <option value="">Price</option>
-            <option value="htlp">High To Low Price</option>
-            <option value="lthp">Low To High Price</option>
+            <option value="htlp">High → Low</option>
+            <option value="lthp">Low → High</option>
           </select>
 
           {/* ADD BOOK */}
-          <Link to="/add" style={{ textDecoration: "none" }}>
-            <div className="box">Add Book</div>
+          <Link to="/add">
+            <button className="add-btn">+ Add Book</button>
           </Link>
 
           {/* CART */}
-          <Link to="/cart" style={{ textDecoration: "none" }}>
-            <div className="box">
-              <FontAwesomeIcon icon={faCartShopping} /> ({cartCount})
-            </div>
+          <Link to="/cart" className="cart">
+            <FontAwesomeIcon icon={faCartShopping} />
+            <span className="cart-count">{cartCount}</span>
           </Link>
-
         </div>
-      </div>
+      </nav>
     );
   }
 }
