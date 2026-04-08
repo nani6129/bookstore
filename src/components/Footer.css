@@ -1,0 +1,88 @@
+.footer {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: #fff;
+  padding: 50px 20px;
+  position: relative;
+  font-family: "Poppins", sans-serif;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-column h3 {
+  color: #ff4d4d;
+  margin-bottom: 15px;
+}
+
+.footer-column a {
+  display: block;
+  color: #cbd5e1;
+  margin-bottom: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.footer-column a:hover {
+  color: #fff;
+  transform: translateX(5px);
+}
+
+.playstore {
+  width: 140px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.playstore:hover {
+  transform: scale(1.05);
+}
+
+/* Social Icons */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.social-icons i {
+  font-size: 22px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.social-icons i:hover {
+  color: #ff4d4d;
+  transform: scale(1.2);
+}
+
+/* Copyright */
+.footer p {
+  text-align: center;
+  margin-top: 20px;
+  color: #94a3b8;
+}
+
+/* Scroll Button */
+.scroll-top {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: #ff4d4d;
+  border: none;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.scroll-top:hover {
+  background: #ff1a1a;
+}
