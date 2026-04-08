@@ -11,6 +11,7 @@ function BookList({
   priceSort,
   cart,
   setCart,
+  showToast
 }) {
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -47,6 +48,7 @@ function BookList({
       setCart(updatedCart);
     } else {
       setCart([...cart, { ...book, qty: 1 }]);
+      showToast("Added to cart successfully ✅");
     }
   };
 
@@ -101,6 +103,8 @@ BookList.propTypes = {
   priceSort: PropTypes.string,
   cart: PropTypes.array.isRequired,
   setCart: PropTypes.func.isRequired,
+
+  showToast: PropTypes.func.isRequired,
 };
 
 export default BookList;
