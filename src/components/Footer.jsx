@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import SocialIcons from "./SocialIcons.jsx";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./Footer.css";
 
 const Footer = () => {
@@ -30,6 +32,15 @@ const Footer = () => {
       { name: "Sitemap", path: "/sitemap" },
     ],
   };
+  const socialLinks = [
+  { icon: "fa-facebook", url: "https://facebook.com" },
+  { icon: "fa-x-twitter", url: "https://twitter.com" },
+  { icon: "fa-linkedin", url: "https://linkedin.com" },
+  { icon: "fa-pinterest", url: "https://pinterest.com" },
+  { icon: "fa-youtube", url: "https://youtube.com" },
+  { icon: "fa-instagram", url: "https://instagram.com" },
+];
+  
 
   return (
     <footer className="footer">
@@ -51,15 +62,9 @@ const Footer = () => {
         </div>
       </div>
 
+      
       {/* Social Icons */}
-      <div className="social-icons">
-        <i className="fab fa-facebook"></i>
-        <i className="fab fa-x-twitter"></i>
-        <i className="fab fa-linkedin"></i>
-        <i className="fab fa-pinterest"></i>
-        <i className="fab fa-youtube"></i>
-        <i className="fab fa-instagram"></i>
-      </div>
+<SocialIcons links={socialLinks} />
 
       {/* Bottom */}
       <p className="copyright">
