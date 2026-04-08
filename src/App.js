@@ -84,7 +84,7 @@ function App() {
                 setPriceSort={setPriceSort}
                 cartCount={cart.length}
               />
-              <AddBook books={books} setBooks={setBooks} />
+              <AddBook books={books} setBooks={setBooks} showToast={showToast} />
             </>
           }
         />
