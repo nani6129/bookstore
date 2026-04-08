@@ -5,6 +5,7 @@ import AddBook from "./components/AddBook";
 import Cart from "./components/Cart";
 import Splash from "./components/Splash";
 import booksData from "./data/books";
+import Footer from "./components/Footer"
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 
@@ -90,6 +91,7 @@ function App() {
         />
 
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
