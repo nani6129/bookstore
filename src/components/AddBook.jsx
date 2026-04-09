@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./AddBook.css";
-function AddBook({ books, setBooks, showToast }) {
+function AddBook({ books, setBooks }) {
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
@@ -22,10 +22,7 @@ function AddBook({ books, setBooks, showToast }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (Object.values(form).some((val) => val === "")) {
-      showToast("Please fill all fields ⚠️", "error");
-      return;
-    }
+    
 
     const newBook = {
       ...form,
@@ -38,7 +35,7 @@ function AddBook({ books, setBooks, showToast }) {
     setBooks(updated);
     localStorage.setItem("books", JSON.stringify(updated));
 
-    showToast("Book added successfully 🎉");
+    // showToast("Book added successfully 🎉");
 
     navigate("/home"); // better route
   };
@@ -106,7 +103,7 @@ function AddBook({ books, setBooks, showToast }) {
 AddBook.propTypes = {
   books: PropTypes.array.isRequired,
   setBooks: PropTypes.func.isRequired,
-  showToast: PropTypes.func.isRequired,
+  
 };
 
 export default AddBook;

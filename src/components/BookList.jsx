@@ -11,7 +11,6 @@ function BookList({
   priceSort,
   cart,
   setCart,
-  showToast
 }) {
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -46,10 +45,7 @@ function BookList({
           : item
       );
       setCart(updatedCart);
-    } else {
-      setCart([...cart, { ...book, qty: 1 }]);
-      showToast("Added to cart successfully ✅");
-    }
+    } 
   };
 
   return (

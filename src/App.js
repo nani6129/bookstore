@@ -7,7 +7,7 @@ import Splash from "./components/Splash";
 import booksData from "./data/books";
 import Footer from "./components/Footer"
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Toast from "./components/Toast";
+// import Toast from "./components/Toast";
 import "./App.css";
 
 function App() {
@@ -21,26 +21,13 @@ function App() {
     return stored ? JSON.parse(stored) : [];
   });
 
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
-  const [toast, setToast] = useState(null);
-
-  const showToast = (message, type = "success") => {
-    setToast({ message, type });
-  };
+ 
 
 
   return (
 
     <BrowserRouter>
-      {toast && (
-        <Toast
-          message={toast.message}
-          type={toast.type}
-          onClose={() => setToast(null)}
-        />
-      )}
+      
       <Routes>
 
         {/* REDIRECT ROOT */}
@@ -84,7 +71,7 @@ function App() {
                 setPriceSort={setPriceSort}
                 cartCount={cart.length}
               />
-              <AddBook books={books} setBooks={setBooks} showToast={showToast} />
+              <AddBook books={books} setBooks={setBooks}  />
             </>
           }
         />
@@ -103,7 +90,7 @@ function App() {
               <Cart
                 cart={cart}
                 setCart={setCart}
-                showToast={showToast}   // MUST BE HERE
+          
               />
             </>
           }

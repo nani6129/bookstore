@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faTrash } from "@fortawesome/free-solid-svg-icons";
 
-function Cart({ cart, setCart,showToast }) {
+function Cart({ cart, setCart }) {
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -13,11 +13,11 @@ function Cart({ cart, setCart,showToast }) {
   //   const updated = cart.filter((item) => item.id !== id);
   //   setCart(updated);
   // };
-  const removeItem = (id) => {
-  const updated = cart.filter((item) => item.id !== id);
-  setCart(updated);
-  showToast("Item removed ❌", "error");
-};
+//   const removeItem = (id) => {
+//   const updated = cart.filter((item) => item.id !== id);
+//   setCart(updated);
+//   showToast("Item removed ❌", "error");
+// };
 
   const increaseQty = (id) => {
     const updated = cart.map((item) =>
@@ -41,10 +41,10 @@ function Cart({ cart, setCart,showToast }) {
   // const clearCart = () => {
   //   setCart([]);
   // };
-   const clearCart = () => {
-  setCart([]);
-  showToast("Cart cleared 🗑️", "error");
-};
+//    const clearCart = () => {
+//   setCart([]);
+//   showToast("Cart cleared 🗑️", "error");
+// };
   return (
   <div className="cart-container">
 
@@ -112,7 +112,7 @@ function Cart({ cart, setCart,showToast }) {
 Cart.propTypes = {
   cart: PropTypes.array.isRequired,
   setCart: PropTypes.func.isRequired,
-  showToast: PropTypes.func.isRequired,
+  
 };
 
 export default Cart;
