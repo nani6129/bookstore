@@ -14,6 +14,7 @@ function Cart({ cart, setCart }) {
       item.id === id ? { ...item, qty: item.qty + 1 } : item
     );
     setCart(updated);
+    
   };
 
   const decreaseQty = (id) => {
@@ -24,6 +25,7 @@ function Cart({ cart, setCart }) {
       .filter((item) => item.qty > 0);
 
     setCart(updated);
+    
   };
 
   const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
@@ -76,7 +78,7 @@ function Cart({ cart, setCart }) {
 
       <div className="summary-row">
         <span>Items</span>
-        <span>{cart.length}</span>
+        <span>{cart.reduce((sum, item) => sum + item.qty, 0)}</span>
       </div>
 
       <div className="summary-row total">

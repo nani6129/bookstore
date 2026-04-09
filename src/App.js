@@ -45,7 +45,8 @@ function App() {
                 setFilter={setFilter}
                 setLikesSort={setLikesSort}
                 setPriceSort={setPriceSort}
-                cartCount={cart.length}
+                // cartCount={cart.length}
+                cartCount={cart.reduce((sum, item) => sum + item.qty, 0)}
               />
               <BookList
                 books={books}
