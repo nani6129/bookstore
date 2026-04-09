@@ -45,14 +45,17 @@ function BookList({
           : item
       );
       setCart(updatedCart);
-    } 
+    } else {
+      setCart([...cart, { ...book, qty: 1 }]);
+    }
   };
+
 
   return (
     <div className="container">
       {data.map((book) => (
         <div className="cards" key={book.id}>
-          
+
           {/* IMAGE SECTION */}
           <div className="img">
             <img src={`/${book.image}`} alt={book.title} />
