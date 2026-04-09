@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import PropTypes from "prop-types";
-import "./AddBook.css";
+
 function AddBook({ books, setBooks }) {
   const navigate = useNavigate();
 
@@ -22,7 +21,10 @@ function AddBook({ books, setBooks }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    
+    if (Object.values(form).some((val) => val === "")) {
+      alert("Fill all fields");
+      return;
+    }
 
     const newBook = {
       ...form,
@@ -35,75 +37,35 @@ function AddBook({ books, setBooks }) {
     setBooks(updated);
     localStorage.setItem("books", JSON.stringify(updated));
 
-    // showToast("Book added successfully 🎉");
+    alert("Book Added!");
 
-    navigate("/home"); // better route
+    navigate("/"); // ✅ go back to home
   };
 
   return (
-    <div className="form-container">
+    <div className="form-container" style={{ display: "block" }}>
       <h1>Add a New Book</h1>
 
       <form onSubmit={handleSubmit} className="add-book-form">
+        <input name="image" placeholder="Image file name" onChange={handleChange} /><br /><br />
+        <input name="title" placeholder="Title" onChange={handleChange} /><br /><br />
+        <input name="author" placeholder="Author" onChange={handleChange} /><br /><br />
+        <input name="price" placeholder="Price" onChange={handleChange} /><br /><br />
+        <input name="likes" placeholder="Likes" onChange={handleChange} /><br /><br />
 
-        <input
-          name="image"
-          placeholder="📷 Image file name"
-          onChange={handleChange}
-        />
+        <textarea name="description" placeholder="Description" rows="10" cols="30" onChange={handleChange}></textarea><br /><br />
 
-        <input
-          name="title"
-          placeholder="📖 Title"
-          onChange={handleChange}
-        />
-
-        <input
-          name="author"
-          placeholder="✍️ Author"
-          onChange={handleChange}
-        />
-
-        <input
-          name="price"
-          placeholder="💰 Price"
-          onChange={handleChange}
-        />
-
-        <input
-          name="likes"
-          placeholder="❤️ Likes"
-          onChange={handleChange}
-        />
-
-        <textarea
-          name="description"
-          placeholder="📝 Description"
-          rows="5"
-          onChange={handleChange}
-        />
-
-        <select
-          name="category"
-          onChange={handleChange}
-          className="book-category"
-        >
-          <option value="">📚 Select Category</option>
+        <select name="category" onChange={handleChange} className="book-category">
+          <option value="">Select Category</option>
           <option value="history">History</option>
           <option value="comedy">Comedy</option>
           <option value="romance">Romance</option>
-        </select>
+        </select><br /><br />
 
-        <button type="submit">🚀 Add Book</button>
+        <button type="submit">Add Book</button>
       </form>
     </div>
   );
 }
-
-AddBook.propTypes = {
-  books: PropTypes.array.isRequired,
-  setBooks: PropTypes.func.isRequired,
-  
-};
 
 export default AddBook;
