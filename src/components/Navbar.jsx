@@ -17,6 +17,10 @@ class Navbar extends Component {
   handleFilter = (value) => {
     this.setState({ active: value });
     this.props.setFilter(value);
+    if (value === "all") {
+    this.props.setLikesSort("");
+    this.props.setPriceSort("");
+  }
   };
 
   render() {
@@ -45,12 +49,16 @@ class Navbar extends Component {
           {/* CATEGORY */}
           <select
             className="nav-select"
+            value={active}
             onChange={(e) => this.handleFilter(e.target.value)}
           >
-            <option value="">Category</option>
+            <option value="all">category</option>
             <option value="history">History</option>
-            <option value="comedy">Comedy</option>
-            <option value="romance">Romance</option>
+<option value="comedy">Comedy</option>
+<option value="romance">Romance</option>
+<option value="sci-fi">Sci-Fi</option>
+<option value="horror">Horror</option>
+<option value="entreprenuership">Entrepreneurship</option>
           </select>
 
           {/* LIKES */}

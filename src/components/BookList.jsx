@@ -16,7 +16,7 @@ function BookList({
   useEffect(() => {
     let temp = [...books];
 
-    if (filter !== "all" && filter !== "select-category") {
+    if (filter !== "all" && filter !== "") {
       temp = temp.filter((b) => b.category === filter);
     }
 
@@ -100,7 +100,6 @@ BookList.propTypes = {
   cart: PropTypes.array.isRequired,
   setCart: PropTypes.func.isRequired,
 
-  showToast: PropTypes.func.isRequired,
 };
 
 export default BookList;

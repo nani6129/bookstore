@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function AddBook({ books, setBooks }) {
+function AddBook({ books, setBooks,setFilter }) {
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
@@ -38,7 +38,7 @@ function AddBook({ books, setBooks }) {
     localStorage.setItem("books", JSON.stringify(updated));
 
     alert("Book Added!");
-
+    setFilter("all");
     navigate("/"); // ✅ go back to home
   };
 
