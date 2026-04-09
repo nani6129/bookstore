@@ -9,16 +9,6 @@ function Cart({ cart, setCart }) {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
-  // const removeItem = (id) => {
-  //   const updated = cart.filter((item) => item.id !== id);
-  //   setCart(updated);
-  // };
-//   const removeItem = (id) => {
-//   const updated = cart.filter((item) => item.id !== id);
-//   setCart(updated);
-//   showToast("Item removed ❌", "error");
-// };
-
   const increaseQty = (id) => {
     const updated = cart.map((item) =>
       item.id === id ? { ...item, qty: item.qty + 1 } : item
@@ -38,13 +28,7 @@ function Cart({ cart, setCart }) {
 
   const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 
-  // const clearCart = () => {
-  //   setCart([]);
-  // };
-//    const clearCart = () => {
-//   setCart([]);
-//   showToast("Cart cleared 🗑️", "error");
-// };
+  
   return (
   <div className="cart-container">
 
@@ -73,12 +57,12 @@ function Cart({ cart, setCart }) {
                 <button onClick={() => increaseQty(item.id)}>+</button>
               </div>
 
-              <button
+              {/* <button
                 className="remove-btn"
                 onClick={() => removeItem(item.id)}
               >
                 <FontAwesomeIcon icon={faTrash} /> Remove
-              </button>
+              </button> */}
             </div>
 
           </div>
@@ -100,9 +84,9 @@ function Cart({ cart, setCart }) {
         <span>Rs.{total}</span>
       </div>
 
-      <button className="clear-btn" onClick={clearCart}>
+      {/* <button className="clear-btn" onClick={clearCart}>
         Clear Cart
-      </button>
+      </button> */}
     </div>
 
   </div>
